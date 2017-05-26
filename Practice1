@@ -1,0 +1,43 @@
+package prac;
+import java.io.*;
+import java.util.Scanner;
+
+/*
+ * Input and outputting it to terminal and file
+*/
+
+
+
+public class prac {
+
+	public static void main(String[] args) throws IOException {
+		System.out.println("wow");
+        
+		try {
+		//your name is (blank), you are (blank) years old, and your username is (blank)
+		String name, username;
+		int age; 
+		
+		Scanner reader = new Scanner(System.in);
+		System.out.println("Name: ");
+		name = reader.nextLine();
+		
+		System.out.println("Age: ");
+		age = reader.nextInt();
+		
+		Scanner reader2 = new Scanner(System.in);
+		System.out.println("Username: ");
+		username = reader2.nextLine();
+
+		String output = "Your name is " + name + " and age at " + age + ". Username: " + username;
+		System.out.println(output);
+		
+		PrintWriter out = new PrintWriter("prac1.txt");
+		out.print(output);
+		
+		}catch(IOException e) {
+        System.out.print("Exception");
+     }	
+	}
+	
+}
