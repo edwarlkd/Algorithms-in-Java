@@ -1,0 +1,66 @@
+package prac;
+import java.io.*;
+import java.util.Scanner;
+
+//SIMPLE CALCULATOR functions
+
+public class prac {
+
+	public static void main(String[] args) throws IOException {
+		System.out.println("wow");
+		/*EXTRA CREDIT: make the calculator have multiple functions! 
+		 * Not only should it be  able to calculate F = M * A, but also A = F/M, and M = F/A!
+		 */
+		System.out.println("Choose a mode...");
+		System.out.println("1. Force = Mass * Accel");
+		System.out.println("2. Mass = Force / Accel");
+		System.out.println("3. Accel = Force * Mass");
+		
+		int op = 0;
+		Scanner reader = new Scanner(System.in);
+		op = reader.nextInt();
+		
+		//for each mode, make functions
+		float result = 0;
+		if(op == 1){
+			System.out.println("Type in Mass: ");
+			float x = reader.nextFloat();
+			System.out.println("Type in Accel: ");
+			float y = reader.nextFloat();
+			result = fEqualma(x,y);
+		}
+		else if(op == 2){
+			System.out.println("Type in Force: ");
+			float x = reader.nextFloat();
+			System.out.println("Type in Accel: ");
+			float y = reader.nextFloat();
+			result = mEqualsfa(x,y);
+			
+		}
+		else if(op == 3){
+			System.out.println("Type in Force: ");
+			float x = reader.nextFloat();
+			System.out.println("Type in Mass: ");
+			float y = reader.nextFloat();
+			result = aEqualsfm(x,y);
+			
+		}
+		else{
+			System.out.println("Good bye");
+		}
+		
+		System.out.println("Result: " + result);
+	}
+	
+	 /** returns the minimum of two numbers */
+	   public static float fEqualma(float n1, float n2) {
+		   return n1 * n2;
+	   }
+	   public static float mEqualsfa(float n1, float n2){
+		   return n1 / n2; // f / a
+	   }
+	   public static float aEqualsfm(float n1, float n2){
+		   return n1 / n2; // f / m
+	   }
+
+}
