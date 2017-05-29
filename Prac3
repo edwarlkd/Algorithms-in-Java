@@ -1,0 +1,72 @@
+package prac;
+import java.io.IOException;
+import java.util.Scanner;
+
+//Simple Encryption   
+
+public class prac {
+
+	public static void main(String[] args) throws IOException {
+		System.out.println("wow");
+		/*EXTRA CREDIT: make the calculator have multiple functions! 
+		 * Not only should it be  able to calculate F = M * A, but also A = F/M, and M = F/A!
+		 */
+		System.out.println("Enter a string: ");
+		String str;
+		Scanner reader = new Scanner(System.in);
+		str = reader.nextLine();
+		
+		//now decipher this
+		String decodedStr = deciper(str, 13);
+		
+		System.out.println("Original: " + str);
+		
+		System.out.println("Decoded: " + decodedStr);
+	}
+	
+	public static String deciper(String s, int a){
+		//65:A ~ 90:Z		97:a ~ 122:z  
+		char ccc[] = s.toCharArray();
+		for(int i = 0; i < s.length(); i++)
+		{
+			char temp = s.charAt(i);
+			if( (int)temp >= 65 && (int)temp <= 90){
+				if( (int)temp + a > 90 ){
+					//89 + 5 => 94 | 69
+					int diff = 90 - (temp + a);
+					temp = 'A';
+					temp += diff;
+					ccc[i] = temp;
+				}
+				else{
+					temp += a;
+					ccc[i] = temp;
+				}
+			}
+			if( (int)temp >= 97 && (int)temp <= 122){
+				//97:a ~ 122:z
+				System.out.println("It's a smallcase word... temp =  " + temp + " (int)temp: " + (int)temp );
+				if( (int)temp + a > 122 ){
+					//89 + 5 => 94 | 69
+					System.out.println("hmmmm");
+					int diff = 97 - (temp + a);
+					temp = 'a';
+					temp += diff;
+					ccc[i] = temp;
+				}
+				else{
+					System.out.println("  Before change: " + temp);
+					temp += a;
+					System.out.println("  After change: " + temp);
+					ccc[i] = temp;
+				}		
+				
+			}
+		}
+		String output = new String(ccc);
+		return output;
+	}
+	
+
+
+}
