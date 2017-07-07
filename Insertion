@@ -1,0 +1,48 @@
+package prac;
+import java.util.Random;
+import java.util.Scanner;
+import java.util.Vector;
+
+public class prac {
+
+	// Insertion Algorithm
+	static void insertionAlgo(int[] arr, int size){
+		int key = 0;
+
+		for(int j = 1; j < size; j++){
+			key = arr[j];
+			int index = j - 1;
+			while( index >= 0 && arr[index] > key){
+				arr[index+1] = arr[index];
+				index--;
+			}
+			arr[index+1] = key;
+		}
+	}
+	
+	
+	static void output(int[] arr1, int n){
+		for(int i = 0; i < n; i++){
+			System.out.print(arr1[i] + " ");
+		}
+		System.out.println();
+	}
+	
+	public static void main(String[] args) {
+//You're challenge for today is to create a random password generator!
+		Scanner sc = new Scanner(System.in);
+		int n = 0;
+		n = sc.nextInt();
+		int[] intArr = new int[n];
+		
+		for(int i = 0; i < n; i++){
+			intArr[i] = sc.nextInt();
+		}
+		
+		//see the difference
+		output(intArr, n);
+		insertionAlgo(intArr, n);
+		output(intArr, n);
+		
+	}
+}
