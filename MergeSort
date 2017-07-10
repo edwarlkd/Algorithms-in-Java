@@ -1,0 +1,91 @@
+package prac;
+import java.util.Random;
+import java.util.Scanner;
+import java.util.Vector;
+import java.lang.Math;
+
+public class prac {
+	
+	static int globalYo = 0;
+	static int maxNumber = 10000;
+	
+	//Output an array
+	static void output(String str, int[] arr1, int n){
+		System.out.print(str);
+		for(int i = 0; i < n; i++){
+			System.out.print(arr1[i] + " ");
+		}
+		System.out.println();
+	}
+	
+	static void mergeSort(int[] arr, int p, int r){
+		if(p < r){ // image just arr of 2 elements... arr[0] and a[1]... so 0 < 1
+			//divide them in half
+			int q = (int) Math.floor( (r + p) / 2);
+
+			mergeSort(arr, p, q);
+			mergeSort(arr, q+1, r);
+			mergeThem(arr, p, q, r);
+		}
+		
+	}
+	
+	static void mergeThem(int[] arr, int p, int q, int r){
+		// make list from arr[p~q] and arr[q+1,r] 
+		int Lsize = q - p + 1; 
+		int Rsize = r - q;
+		int[] Larr = new int[Lsize+1];
+		int[] Rarr = new int[Rsize+1];
+		
+		// Initializiation 
+		for(int i = 0; i < Lsize; i++){
+			Larr[i] = arr[p+i];
+		}
+		Larr[Lsize] = maxNumber; // sential value for last value
+				
+		for(int i = 0; i < Rsize; i++){
+			Rarr[i] = arr[q+1+i];
+		}
+		Rarr[Rsize] = maxNumber;
+			
+		//do comparison 
+		int Lindex = 0;
+		int Rindex = 0;
+		int arrIndex = p;
+
+		for(int i = p; i < r + 1; i++){
+
+			if(Rarr[Rindex] > Larr[Lindex] ){
+				arr[arrIndex] = Larr[Lindex];
+				Lindex++;
+			}
+			else{
+				arr[arrIndex] = Rarr[Rindex];
+				Rindex++;
+			}
+			
+			arrIndex++;
+		}		
+		
+	}
+	
+	
+	public static void main(String[] args) {
+//You're challenge for today is to create a random password generator!
+		Scanner sc = new Scanner(System.in);
+		int n = 0;
+
+    System.out.println("\n\n\nMergesort......");
+		n = 0;
+		n = sc.nextInt();
+		globalYo = n;
+		int[] intArr2 = new int[n];
+		for(int i = 0; i < n; i++){
+			intArr2[i] = sc.nextInt();
+		}
+			
+		output("Intial: ", intArr2, n);
+		mergeSort(intArr2, 0, n-1);
+		output("MergeSort: ", intArr2, n);
+	}
+}
